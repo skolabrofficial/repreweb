@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Školábr - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Dashboard</h1>
+    <div id="userinfo"></div>
+    <h2>Zprávy pro školu</h2>
+    <ul id="messages"></ul>
+    <button id="logoutBtn">Odhlásit se</button>
+  </div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login.html';
+    }
+
+    async function fetchUserInfo() {
+      const res = await fetch('/api/userinfo', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      if (!res.ok) {
+        localStorage.removeItem('token');
+        window.location.href = '/login.html';
+      }
+      return res.json();
+    }
+
+    async function fetchMessages() {
+      const res = await fetch('/api/messages', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      if (!res.ok) return [];
+      return res.json();
+    }
+
+    function renderUser(user) {
+      const div = document.getElementById('userinfo');
+      div.innerHTML = `
+        <p>Jméno: ${user.fullname}</p>
+        <p>Role: ${user.role}</p>
+        <p>Email: ${user.email}</p>
+      `;
+    }
+
+    function renderMessages(messages) {
+      const ul = document.getElementById('messages');
+      ul.innerHTML = '';
+      if (messages.length === 0) {
+        ul.innerHTML = '<li>Žádné nové zprávy.</li>';
+      } else {
+        messages.forEach(m => {
+          const li = document.createElement('li');
+          li.textContent = `${m.from}: ${m.text}`;
+          ul.appendChild(li);
+        });
+      }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = '/login.html';
+    });
+
+    (async () => {
+      const user = await fetchUserInfo();
+      renderUser(user);
+      const messages = await fetchMessages();
+      renderMessages(messages);
+    })();
+  </script>
+</body>
+</html>
