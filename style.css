@@ -1,98 +1,73 @@
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f5f7fa;
   color: #333;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-  background: #003366;
+  background-color: #004080;
   color: white;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
 }
 
-.logo {
-  height: 40px;
+header h1 {
+  margin: 0;
 }
 
 nav a {
   color: white;
-  margin-left: 20px;
+  margin-left: 15px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-nav .login-btn {
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
   background: white;
-  color: #003366;
-  padding: 8px 12px;
   border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-main {
-  padding: 2rem;
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
-.hero {
-  text-align: center;
-  padding: 4rem 1rem;
-  background: linear-gradient(135deg, #003366, #0055aa);
+button {
+  background-color: #004080;
   color: white;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.btn-primary {
-  background: white;
-  color: #003366;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-align: center;
+  border: none;
+  padding: 12px;
+  width: 100%;
   font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
 }
 
-footer {
-  background: #003366;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+button:hover {
+  background-color: #0066cc;
+}
+
+.error {
+  color: #c00;
+  margin-top: 10px;
+  font-weight: 600;
 }
