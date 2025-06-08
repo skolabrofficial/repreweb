@@ -2,35 +2,77 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Školábr - Oficiální web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Školábr – Oficiální web</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
   <header>
-    <h1>Školábr</h1>
-    <nav>
-      <a href="#about">O projektu</a>
-      <a href="#contact">Kontakt</a>
-      <a href="login.html">Přihlášení</a>
-    </nav>
+    <div class="container">
+      <img src="logo.png" alt="Logo Školábr" class="logo"/>
+      <nav>
+        <a href="#about">O systému</a>
+        <a href="#features">Funkce</a>
+        <a href="#for">Komu slouží</a>
+        <a href="#contact">Kontakt</a>
+        <a href="/login.html" class="btn">Přihlášení</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="about">
-      <h2>O Školábrovi</h2>
-      <p>Školábr je moderní školní informační systém... (popis projektu)</p>
-    </section>
+  <section class="hero">
+    <div class="container">
+      <h1>Školábr – Chytrý digitální systém pro školy</h1>
+      <p>Jednoduchý. Online. Připravený pro každou školu a spolek.</p>
+    </div>
+  </section>
 
-    <section id="contact">
+  <section class="section" id="about">
+    <div class="container">
+      <h2>Co je Školábr?</h2>
+      <p>Školábr je online platforma pro školy, školní spolky a zástupce. Umožňuje snadnou správu dat, komunikaci a organizaci – bez instalace, dostupné z jakéhokoliv zařízení.</p>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <h2>Funkce</h2>
+      <ul class="features">
+        <li>📘 Elektronická třídní kniha</li>
+        <li>✉️ Modul zpráv a oznámení</li>
+        <li>🛒 Interní obchodní sekce</li>
+        <li>🔒 Víceúrovňové role a přístupy</li>
+        <li>📅 Kalendář akcí a evidence</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="for">
+    <div class="container">
+      <h2>Pro koho?</h2>
+      <p>Školábr využijí:</p>
+      <ul>
+        <li>Základní a střední školy</li>
+        <li>Školní spolky a nadační fondy</li>
+        <li>Zástupci tříd a žákovské parlamenty</li>
+        <li>Školní správa a vedení</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
       <h2>Kontakt</h2>
-      <p>Email: info@skolabr.cz</p>
-      <p>Telefon: +420 123 456 789</p>
-    </section>
-  </main>
+      <p>📧 <a href="mailto:skolabr@atlas.cz">skolabr@atlas.cz</a></p>
+      <p>🔗 <a href="/login.html">Přejít na přihlášení</a></p>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2025 Školábr. Všechna práva vyhrazena.</p>
+    <div class="container">
+      <p>&copy; 2025 Školábr. Vytvořeno pro školy, spolky a zástupce. Powered by Spolek Lipová.</p>
+    </div>
   </footer>
 </body>
 </html>
