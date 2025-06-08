@@ -2,78 +2,44 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Školábr - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Školábr – Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Dashboard</h1>
-    <div id="userinfo"></div>
-    <h2>Zprávy pro školu</h2>
-    <ul id="messages"></ul>
-    <button id="logoutBtn">Odhlásit se</button>
-  </div>
 
-  <script>
-    const token = localStorage.getItem('token');
-    if (!token) {
-      window.location.href = '/login.html';
-    }
+  <!-- HORNÍ NAVIGACE -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-user" id="user-info">
+        <!-- Dynamicky se doplní -->
+      </div>
+      <a href="index.html" class="logout-btn">Odhlásit se</a>
+    </div>
+  </header>
 
-    async function fetchUserInfo() {
-      const res = await fetch('/api/userinfo', {
-        headers: { 'Authorization': 'Bearer ' + token }
-      });
-      if (!res.ok) {
-        localStorage.removeItem('token');
-        window.location.href = '/login.html';
-      }
-      return res.json();
-    }
+  <!-- HLAVNÍ OBSAH -->
+  <main class="main">
+    <div class="container">
+      <h1>Vítej v systému Školábr</h1>
 
-    async function fetchMessages() {
-      const res = await fetch('/api/messages', {
-        headers: { 'Authorization': 'Bearer ' + token }
-      });
-      if (!res.ok) return [];
-      return res.json();
-    }
+      <div class="card">
+        <h2>Zprávy a oznámení</h2>
+        <p id="user-message">Načítání zprávy...</p>
+      </div>
 
-    function renderUser(user) {
-      const div = document.getElementById('userinfo');
-      div.innerHTML = `
-        <p>Jméno: ${user.fullname}</p>
-        <p>Role: ${user.role}</p>
-        <p>Email: ${user.email}</p>
-      `;
-    }
+      <div class="card">
+        <h2>Moduly</h2>
+        <ul>
+          <li>✔ Docházka</li>
+          <li>✔ Správa uživatelů</li>
+          <li>✔ Školní dokumenty</li>
+          <li>✔ Obchodní modul</li>
+        </ul>
+      </div>
+    </div>
+  </main>
 
-    function renderMessages(messages) {
-      const ul = document.getElementById('messages');
-      ul.innerHTML = '';
-      if (messages.length === 0) {
-        ul.innerHTML = '<li>Žádné nové zprávy.</li>';
-      } else {
-        messages.forEach(m => {
-          const li = document.createElement('li');
-          li.textContent = `${m.from}: ${m.text}`;
-          ul.appendChild(li);
-        });
-      }
-    }
-
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      localStorage.removeItem('token');
-      window.location.href = '/login.html';
-    });
-
-    (async () => {
-      const user = await fetchUserInfo();
-      renderUser(user);
-      const messages = await fetchMessages();
-      renderMessages(messages);
-    })();
-  </script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
