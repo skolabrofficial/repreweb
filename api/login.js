@@ -4,6 +4,7 @@ const users = [
   { username: 'skolabr', password: 'skolabr8520', fullname: 'Školábr Admin', role: 'admin', email: 'admin@skolabr.cz', note: 'Hlavní admin' },
   { username: 'obskolabr', password: 'obskolabr8520', fullname: 'Obchod Školábr', role: 'obchod', email: 'obchod@skolabr.cz', note: 'Obchodní zástupce' },
   { username: 'splp85852', password: 'gdsf5321', fullname: 'Spolek Lipová', role: 'skola', email: 'skola@lipova.cz', note: 'Zástupce školy' }
+  { username: 'msmt', password: '1234', fullname: 'Ministerstvo ŠMT', role: 'skola', email: 'skolabr@msmt.cz', note: 'Ministersvo školství' }
 ];
 
 export default function handler(req, res) {
